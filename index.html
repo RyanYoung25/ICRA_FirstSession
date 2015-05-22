@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>ICRA 2015</title>
+
+        <meta name="description" content="MAESTOR Presentation for ICRA 2015">
+        <meta name="author" content="Ryan Young">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>MAESTOR</h1>
+                    <h3>Machine And Environment Simulation Translation Over Ros</h3>
+                </section>
+
+
+                <section>
+                    <h2>Programming HUBO is hard</h2>
+
+                    <br>
+                    <ul>
+                        <li class="fragment">Original Code: 12,000 lines of C++ in one file</li>
+                        <li class="fragment">Took weeks to familiarize yourself with it</li>
+                        <li class="fragment">The original code was not very flexible</li>
+                        <li class="fragment">Running on Windows XP</li>
+                    </ul>
+                </section>
+
+                <!-- Maybe make slide of the scrolling code -->
+
+
+                <section>
+                    <h2>Software Rewrite Goals:</h2>
+
+                    <br>
+                    <ul>
+                        <li class="fragment">Make the HUBO easier to program</li>
+                        <li class="fragment">Make the development of gestures safer</li>
+                        <li class="fragment">Make integrating sensors simpler</li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <h2> Where did MAESTOR come from? </h2>
+                    <ul>
+
+                        <li class="fragment">MAESTRO: MAchine and Environment Software Translation to ROs</li>
+                        <ul class="fragment">
+                            <li>Second Iteration</li>
+                            <li>Needed work on the ease of use and flexibility</li>
+                        </ul>
+
+                        <li class="fragment">MAESTOR: Machine And Environment Simulation Translation Over Ros</li>
+                        <ul class="fragment">
+                            <li>Third and final iteration</li>
+                            <li>The software was completely restructured to be more flexible and easier to use.</li>
+                        </ul>  
+                    </ul>
+                </section>  
+
+                <section>
+                    <h2>How does MAESTOR make it easier to program?</h2>
+
+                    <br>
+                    <ul>
+                        <li class ="fragment">Simple python API</li>
+                        <li class ="fragment">Movements boil down to end position joint angles</li>
+                        <li class ="fragment">Students with no programming experience have had success in quickly creating complex gestures.</li>
+                    </ul>
+                </section>
+
+                <!-- Show video of Zac's dance on the robot here -->
+                <section data-background-video="./vid/macarena.ogv">
+                </section>
+
+
+                <section>
+                    <h2>How does MAESTOR make development safer?</h2>
+
+                    <br>
+                    <ul>
+                        <li class="fragment">OpenRAVE simulation of HUBO allows for off robot testing and development of gestures.</li>
+                        <li class="fragment">Gestures can be run in both simulation and on the physical robot without changing anything.</li>
+                    </ul>
+                </section>
+
+                <!-- Side by side videos of hubo in simulation and hardware -->
+                <!-- <section>
+                    <table>
+                        <tr>
+                            <td><video autoplay="true" style="height: 30vh !important;"><source src="./vid/simulationWave.mp4" type="video/mp4"></video></td>
+                            
+                            <td><video autoplay="true" style="height: 30vh !important;"><source src="./vid/waveOnRobot.mp4" type="video/mp4"></video></td>
+                        </tr>
+                    </table>
+                </section> -->
+
+                <section data-background-video="./vid/simulationWave.mp4"></section>
+                <section data-background-video="./vid/waveOnRobot.mp4"></section>
+
+
+
+                <section>
+                    <h2>How does MAESTOR help with sensor integration?</h2> 
+
+                    <br>
+                    <ul>
+                        <li class="fragment">Built on top of ROS, gives access to hundreds of ROS packages</li>
+                        <li class="fragment">MAESTOR communication works with both python and C++, can use either language to access sensors and command HUBO</li>
+                    </ul>
+                </section>
+
+                <!-- Pick a demo that uses sensors -->
+
+                <section data-background-video="./vid/itero.mp4">
+                </section>
+
+                <section data-background="./img/MaestorDiagram.png" data-background-size="100%">
+                </section>
+
+                <section>
+                    <h2>Interacting with MAESTOR</h2>
+                    <br>
+                    <ul style:"list-style: none;">
+                        <li>The MAESTOR console</li>
+                        <li>The MAESTOR python object</li>
+                        <li class="fragment fade-out">Any ROS node through ROS service calls</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Time for the Hands On portion</h2>
+                </section>
+
+                <section>
+                    <h2>Writing a gesture</h2>
+                    <br>
+                    <ul>
+                        <li class="fragment">HUBO thinks of motions as joint angles</li>
+                        <div class="fragment">
+                            <li>Web-tool to help find appropriate joint angles: <br>Hubo-in-the-browser</li>
+                            <li><i>wmhilton.com/hubo-js</i></li>
+                        </div>
+                    </ul>
+                </section>
+
+                <section data-background="./img/HuboInTheBrowserSliders.png" data-background-size="100%">
+                </section>
+
+                <section>
+                    <h2>Creating your first script</h2>
+                    <br>
+                    <br>
+                    <ul style="list-style: none;">
+                        <li><h4 class="fragment"> hubo@hubo:~$ <i>cd git/maestor/scripts/</i></h4></li>
+                        <li><h4 class="fragment"> hubo@hubo:~$ <i>touch workshop.py</i></h4></li>
+                        <li><h4 class="fragment"> hubo@hubo:~$ <i>gedit workshop.py</i></h4></li>
+                    </ul>
+                </section>
+
+
+
+                <section>
+                    <h2>Starting MAESTOR</h2>
+                    <br>
+                    <br>
+                    <h3>MAESTOR has three modes of operation:</h3>
+                    <ol>
+                        <li>real - The physical hardware mode</li>
+                        <li>sim - The simulation mode with physics enabled</li>
+                        <li>sim-real - The simulation with physics mode turned off. <br>This gives real time motion visualization</li>
+                    </ol>
+                    <br>
+                    <br>
+                    <h4 class="fragment">hubo@hubo:~$<i>maestor sim-real</i></h4>
+                </section>
+
+                <section data-background="./img/MaestorStart.png">
+
+                </section>
+
+                <section>
+                    <h2>The MAESTOR Console</h2>
+                    <p>After starting MAESTOR, to run commands and initialize the robot we need to use the console. To start the MAESTOR console run the command: </p>
+                    <br>
+                    <h4 class="fragment">hubo@hubo:~$<i>maestor console</i></h4>
+
+                </section>
+
+                <section>
+                    <h2>Start Up</h2>
+                    <br>
+                    <ul style="list-style: none;">
+                        <li><h4 class="fragment"> &gt;&gt;&gt; <i>initRobot("")</i></h4></li>
+                        <li><h4 class="fragment"> &gt;&gt;&gt; <i>command("HomeAll", "")</i></h4></li>
+                        <li><h4 class="fragment"> &gt;&gt;&gt; <i>command("EnableAll", "")</i></h4></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>The robot is ready to move!</h2>
+                </section>
+
+                <section>
+                    <h2>Running your script!</h2>
+                    <br>
+                    <h3>MAESTOR provides a convenient way of running script from anywhere if they are in the /maestor/scripts/ directory and end with .py</h3>
+                    <br>
+                    <h4 class="fragment"> hubo@hubo:~$ <i>maestor script workshop</i></h4>
+
+                </section>
+
+                <section>
+                    <h1>MAESTOR</h1>
+                    <h3>Machine And Environment Simulation Translation Over Ros</h3>
+                </section>
+
+                
+            
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
